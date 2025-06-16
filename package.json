@@ -1,7 +1,7 @@
 {
     "name": "@purinton/skeleton",
     "type": "module",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A modern Discord app built with Node.js, based on the purinton/discord foundation.",
     "main": "skeleton.mjs",
     "scripts": {
