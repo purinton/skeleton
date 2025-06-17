@@ -1,31 +1,36 @@
 #!/usr/bin/env node
 import 'dotenv/config';
-import { log, fs, path, pathUrl, registerHandlers, registerSignals } from '@purinton/common';
+//import { createDb } from '@purinton/mysql';
 import { createDiscord } from '@purinton/discord';
+import { log, fs, path, registerHandlers, registerSignals } from '@purinton/common';
 
 registerHandlers({ log });
 registerSignals({ log });
 
-const name = 'discord-template';
 const packageJson = JSON.parse(fs.readFileSync(path(import.meta, 'package.json')), 'utf8');
 const version = packageJson.version;
 
+const presence = { activities: [{ name: `discord-template v${version}`, type: 4 }], status: 'online' };
+
 (async () => {
+    //const db = await createDb({ log });
+    //registerSignals({ shutdownHook: () => db.end() });
     const client = await createDiscord({
         log,
         rootDir: path(import.meta),
+        context: {
+            //db,
+            presence,
+            version
+        },
         intents: {
             Guilds: true,
             GuildMessages: true,
-            MessageContent: true,
-        },
-        context: {
-            presence: { activities: [{ name: `${name} v${version}`, type: 4 }], status: 'online' },
-        },
-    });
-    registerSignals({
-        shutdownHook: async () => {
-            await client.destroy();
+            MessageContent: false,
+            GuildMembers: false,
+            GuildPresences: false,
+            GuildVoiceStates: false,
         }
     });
+    registerSignals({ shutdownHook: () => client.destroy() });
 })();
