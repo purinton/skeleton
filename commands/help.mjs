@@ -1,5 +1,5 @@
 // commands/help.mjs
-export default async function (interaction, { log, msg }) {
+export default async function ({ log, msg }, interaction) {
     log.debug('help Request', { interaction });
     const response = {
         content: msg('help', 'This is the default help text.'),
