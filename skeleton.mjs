@@ -26,7 +26,7 @@ const presence = { activities: [{ name: `discord-template v${version}`, type: 4 
         intents: {
             Guilds: true,
             GuildMessages: true,
-            MessageContent: false,
+            MessageContent: true,
             GuildMembers: false,
             GuildPresences: false,
             GuildVoiceStates: false,
