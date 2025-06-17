@@ -25,7 +25,7 @@ const client = await createDiscord({
     intents: {
         Guilds: true,
         GuildMessages: true,
-        MessageContent: false,
+        MessageContent: true,
         GuildMembers: false,
         GuildPresences: false,
         GuildVoiceStates: false,
