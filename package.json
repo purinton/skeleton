@@ -1,7 +1,7 @@
 {
     "name": "@purinton/skeleton",
     "type": "module",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "A modern Discord app built with Node.js, based on the purinton/discord foundation.",
     "main": "skeleton.mjs",
     "scripts": {
@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/purinton/skeleton#readme",
     "devDependencies": {
-        "jest": "^30.0.0"
+        "jest": "^30.0.2"
     },
     "jest": {
         "testEnvironment": "node",
@@ -35,7 +35,7 @@
     },
     "dependencies": {
         "@purinton/common": "^1.0.16",
-        "@purinton/discord": "^1.0.6",
+        "@purinton/discord": "^1.0.10",
         "dotenv": "^16.5.0"
     }
 }
