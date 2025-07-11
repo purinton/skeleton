@@ -32,3 +32,13 @@ const client = await createDiscord({
     }
 });
 registerSignals({ shutdownHook: () => client.destroy() });
+
+// Add memory logging to file every 30 seconds
+const memLogFile = path(import.meta, 'memory-usage.log');
+function logMemoryUsage() {
+    const mem = process.memoryUsage();
+    const logEntry = `${new Date().toISOString()} - RSS: ${mem.rss} HeapTotal: ${mem.heapTotal} HeapUsed: ${mem.heapUsed} External: ${mem.external}\n`;
+    fs.appendFileSync(memLogFile, logEntry);
+}
+setInterval(logMemoryUsage, 30000);
+logMemoryUsage(); // initial log
